@@ -171,7 +171,7 @@ void Block(unsigned char *msg,unsigned int msglen){
 		CF(message_buffer);
 	}else{
 		CF(message_buffer);
-		memset(message_buffer, 0, 64);
+		memset(message_buffer, 0, 64);//
 		for (i = 0; i < 8; i++)
 			message_buffer[56 + i] = (total >> ((8 - 1 - i) * 8)) & 0xFF;
 		CF(message_buffer);
