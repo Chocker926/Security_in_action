@@ -201,7 +201,7 @@ string ModAdd(string str1, string str2) {//mod 2^32运算的函数实现
 	string res1 = HexToBin(str1);
 	string res2 = HexToBin(str2);
 	char temp = '0';
-	string res = "";
+	string res = "";//
 	for (int i = res1.size() - 1; i >= 0; i--) {
 		res = binXor(binXor(res1[i], res2[i]), temp) + res;
 		if (binAnd(res1[i], res2[i]) == '1') {
