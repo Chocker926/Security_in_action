@@ -25,8 +25,7 @@ def birthday_attck(n):
 
 if __name__=="__main__":
     # print(hash(m))
-    time1=time.time()
+    start=time.time()
     birthday_attck(512)
-    time2=time.time()
-    timesum=time2-time1
-    print("运行时间为：{0}".format(timesum))
+    end=time.time()
+    print("运行时间为:{0}".format(end-start))
