@@ -2,18 +2,21 @@ import time
 import random
 from gmssl import sm3, func
 
+def my_sm3(m):
+    #input number
+    m = hex(m)[2:]
+    m = bytes(m, encoding="utf8")
+    m = sm3.sm3_hash(func.bytes_to_list(m))
+    return m
+
 def birthday_attck(n):
     for i in range(2**n):
         b=random.randint(0,2**n)
-        b=hex(b)[2:]
         original_b=b
-        b=bytes(b, encoding = "utf8")
-        b=sm3.sm3_hash(func.bytes_to_list(b))
-        c=random.randint(0, 2 ** n)
-        c = hex(c)[2:]
-        original_c = c
-        c=bytes(c, encoding = "utf8")
-        c = sm3.sm3_hash(func.bytes_to_list(c))
+        my_sm3(b)
+        c=random.randint(0,2**n)
+        original_c=c
+        my_sm3(c)
         if b ==c:
             print(original_b,original_c)
             print("找到碰撞")
