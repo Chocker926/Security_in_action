@@ -3,7 +3,6 @@ import random
 from gmssl import sm3, func
 def my_sm3(m):
     #input number
-    original_m = m
     m = hex(m)[2:]
     m = bytes(m, encoding="utf8")
     m = sm3.sm3_hash(func.bytes_to_list(m))
@@ -26,7 +25,6 @@ def rho_method(n):
     print("失败")
 
 if __name__=="__main__":
-    # print(hash(m))
     start=time.time()
     rho_method(512)
     end=time.time()
