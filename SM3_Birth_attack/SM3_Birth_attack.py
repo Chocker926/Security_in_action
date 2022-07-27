@@ -27,7 +27,6 @@ def birthday_attck(n):
 
 
 if __name__=="__main__":
-    # print(hash(m))
     start=time.time()
     birthday_attck(512)
     end=time.time()
