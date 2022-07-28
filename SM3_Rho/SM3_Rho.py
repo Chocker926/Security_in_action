@@ -11,21 +11,23 @@ def my_sm3(m):
 
 def rho_method(n):
     m = random.randint(0, 0xffffff)
-    res = []
-    for i in range(2**(n-1)):
+    dict={}
+    for i in range(2**256):
         original_m = m
+        temp=bytes(hex(m)[2:], encoding="utf8")
         m = my_sm3(m)
-        res.append(m)
+        dict[m[:n]]=original_m
         m = (2 * original_m + 1)
-        if my_sm3(m) in res:
+        if my_sm3(m)[:n] in dict.keys():
             print("找到碰撞")
-            print(my_sm3(m))
+            print(bytes(hex(m)[2:], encoding="utf8"))
+            print(bytes(hex(dict[my_sm3(m)[:n]])[2:], encoding="utf8"))
             print("查找了{0}次".format(i))
             return
     print("失败")
 
 if __name__=="__main__":
     start=time.time()
-    rho_method(512)
+    rho_method(4)
     end=time.time()
     print("运行时间为:{0}".format(end-start))
