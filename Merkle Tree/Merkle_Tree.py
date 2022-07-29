@@ -38,4 +38,4 @@ def concat_and_hash_list(lst, hash_function = 'sha256'):
 
 
 l = [random.choice(string.ascii_letters) for i in range(2**18) ]
-print(concat_and_hash_list(l))
+print(concat_and_hash_list(l)) 
